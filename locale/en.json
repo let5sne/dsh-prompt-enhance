@@ -1,0 +1,7 @@
+{
+  "meta": {
+    "title": "Prompt enhance",
+    "description": "Adds a star button immediately left of the model selector in the message composer. Clicking it sends the current draft to the default model (Settings → Models) and replaces the draft with the rewritten prompt; if the draft changed while the model answered, the result waits for a second click. Each click is one extra model request, and the draft text is sent to that provider. With the plugin off, the button is gone and no draft is changed.",
+    "detail": "docs/DETAIL.md"
+  }
+}
