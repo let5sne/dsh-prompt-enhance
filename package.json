@@ -1,7 +1,7 @@
 {
   "name": "@let5sne/dsh-prompt-enhance",
   "version": "1.0.0",
-  "description": "Adds a star button left of the model selector that rewrites the composer draft with the default model",
+  "description": "Adds a magic wand button left of the model selector that rewrites the composer draft with the default model",
   "license": "MIT",
   "author": "let5sne",
   "type": "module",

@@ -28,25 +28,27 @@ window.__ModuleLoader__.load({
 @media (prefers-reduced-motion:reduce){.dsh-pe-spin{animation-duration:2s}}
 `
 
-		/** The five-point star the request asks for; plain geometry, no third-party artwork. */
-		const STAR_POINTS = '12,2.8 14.29,8.85 20.75,9.16 15.71,13.21 17.41,19.44 12,15.9 6.59,19.44 8.29,13.21 3.25,9.16 9.71,8.85'
-
-		/** Compact star control; `pending` marks a finished rewrite waiting to be inserted. */
-		function Star({ pending }) {
+		/** Original wand and sparkle geometry; a filled tip marks a pending result. */
+		function EnhanceIcon({ pending }) {
 			return h('svg', {
 				viewBox: '0 0 24 24',
 				width: 18,
 				height: 18,
+				fill: 'none',
+				stroke: 'currentColor',
+				strokeWidth: 1.7,
+				strokeLinecap: 'round',
+				strokeLinejoin: 'round',
 				'aria-hidden': true,
 				focusable: false,
 				style: { display: 'block' },
-			}, h('polygon', {
-				points: STAR_POINTS,
+			},
+			h('path', { d: 'm4 18 8-8 2 2L6 20Z M10 12l2 2' }),
+			h('path', {
+				d: 'm17 2 1.2 3.8L22 7l-3.8 1.2L17 12l-1.2-3.8L12 7l3.8-1.2Z',
 				fill: pending ? 'currentColor' : 'none',
-				stroke: 'currentColor',
-				strokeWidth: 1.6,
-				strokeLinejoin: 'round',
-			}))
+			}),
+			h('path', { d: 'M6 3v4 M4 5h4' }))
 		}
 
 		/** Busy indicator drawn in the same 18px box. */
@@ -71,7 +73,7 @@ window.__ModuleLoader__.load({
 		}
 
 		/**
-		 * Star button for the composer tool row.
+		 * Enhancement wand button for the composer tool row.
 		 * Reads the draft through the Session input hook, rewrites it on the Host,
 		 * and replaces the draft with the result. When the draft changed while the
 		 * model was answering, the result is held until the next click instead of
@@ -216,7 +218,7 @@ window.__ModuleLoader__.load({
 					'data-pending': pending !== null ? 'true' : undefined,
 					onMouseDown: (event) => { event.preventDefault() },
 					onClick: onClick,
-				}, busy ? h(Spinner) : h(Star, { pending: pending !== null })),
+				}, busy ? h(Spinner) : h(EnhanceIcon, { pending: pending !== null })),
 				busy || pending !== null ? h('button', {
 					type: 'button',
 					className: 'dsh-pe-button dsh-pe-action',
@@ -235,7 +237,7 @@ window.__ModuleLoader__.load({
 					en: {
 						enhance: 'Enhance prompt',
 						insert: 'Replace the draft with the enhanced prompt',
-						pending: 'Result saved — click the star to replace the draft, or discard',
+						pending: 'Result ready — click the wand to replace the draft, or discard',
 						discard: 'Discard result',
 						cancel: 'Cancel',
 						tooLong: 'Shorten the prompt to 6000 characters or fewer (some emoji count as two).',
@@ -243,7 +245,7 @@ window.__ModuleLoader__.load({
 					zh: {
 						enhance: '增强提示词',
 						insert: '用增强结果替换草稿',
-						pending: '结果已暂存，点击星标替换草稿，或丢弃结果',
+						pending: '结果已暂存，点击魔法棒替换草稿，或丢弃结果',
 						discard: '丢弃结果',
 						cancel: '取消',
 						tooLong: '提示词过长，请缩短至 6000 字符以内（部分表情按两个字符计）。',
