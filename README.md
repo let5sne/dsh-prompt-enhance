@@ -6,9 +6,10 @@
 
 - 在 composer 工具行、**模型选择器左侧**放一个 28px 星标（槽位 `conversation.input.right`）。
 - 读的是 Session 输入的标准 props（`useInput` / `inputActions`），不读别的插件的 DOM。
-- 结果用 `inputActions.setDraft()` 写回，一步 undo。
-- 如果等待期间草稿被改动：不覆盖，星标变实心，下一次点击才替换（显式确认）。
-- 忙碌时转圈；失败时按钮上方弹错误气泡 8 秒；空草稿 / 发送中 / 输入锁定时禁用。
+- 结果用 `inputActions.setDraft()` 写回，撤销行为由 DSH 输入组件提供。
+- 如果结果返回时草稿已变化或输入不可编辑：结果暂存，星标变实心，待输入可编辑后再次点击才替换；也可以丢弃暂存结果，保留当前草稿。
+- 忙碌时转圈，并提供取消入口；组件卸载时取消请求。取消信号会传递给模型调用，已产生的用量仍由服务商计费。
+- 失败时按钮上方弹错误气泡 8 秒；空草稿 / 发送中 / 输入锁定时禁用增强。超过 6000 个 UTF-16 代码单元的草稿会在发送前提示。
 - 文案走 DSH 的 Client locale 服务（`en` / `zh`）。
 
 ## 安装
@@ -33,10 +34,21 @@ dsh plugin --profile <profile> add "github:let5sne/dsh-prompt-enhance#v1.0.0"
 
 ## 它怎么工作
 
-- **Host 半边（`index.js`）**：注册一个包自己的 JSON 路由 `POST /dsh-prompt-enhance/enhance`（`ctx.webServer`），用 `ctx.llm.stream()` 调默认模型，`system` 是一条提示词工程指令，返回改写后的纯文本。请求体上限 16 KB、草稿上限 6000 字、单次调用 45 s 超时，并校验 `Origin` 必须与 `Host` 同源。
+- **Host 半边（`index.js`）**：注册一个包自己的 JSON 路由 `POST /dsh-prompt-enhance/enhance`（`ctx.webServer`），用 `ctx.llm.stream()` 调默认模型，`system` 是一条提示词工程指令，返回改写后的纯文本。请求体上限 64 KiB、草稿上限 6000 个 UTF-16 代码单元（JavaScript `text.length`，大部分汉字计 1，部分 emoji 计 2）、单次调用 45 s 超时。仅接受回环 Host（localhost、IPv4 回环地址或 IPv6 ::1）及 JSON 请求；存在 `Origin` 时要求协议与主机端口匹配。缺少 `Origin` 的本地工具仍需满足 Host 和 Content-Type 校验。不支持通过自定义域名或远程主机地址访问此端点。连接提前关闭会取消模型请求；模型流以错误或取消结束时不会把部分内容作为成功结果返回。
 - **Client 半边（`client.js`）**：`ctx.slots.inject('conversation.input.right', ...)` 挂载按钮；通过相对 `fetch` 调用上面那条路由；读写草稿只走 `inputActions` / `useInput`。
 
-包不依赖任何 `@deepseek-ai/*` 包，也不用 `dsh.client.external`。
+包无 npm 运行依赖，也不用 `dsh.client.external`；运行时通过 DSH 注入的服务和 Client 插件提供能力。
+
+## 本地验证
+
+需要支持内置测试运行器的 Node.js，无需安装测试依赖：
+
+```sh
+npm test
+npm run check
+```
+
+Host 测试覆盖 HTTP 校验、中文长度、模型流错误与断连取消；Client 测试覆盖草稿暂存、丢弃、取消及过期响应等交互逻辑。测试不调用真实模型，也不替代安装后的浏览器交互验证。
 
 ## 目录
 
@@ -61,7 +73,7 @@ https://let5sne.github.io/dsh-prompt-enhance/market/index.json
 ## 兼容性
 
 - `engines.dsh: ">=0.2.0-rc.2"`（在 0.2.2-rc.1 上开发与验证）。
-- 需要 Web GUI 进程提供 `ctx.webServer` 与 `ctx.llm`；没有 `agentDefaultModel` 时按钮会报错而不是静默失败。
+- Host 需要 Web GUI 进程提供 `webServer`、`llm` 与 `agentDefaultModel` 三项服务；缺少硬依赖时 Host 插件不能激活。服务存在但尚未配置默认模型时，增强请求会返回错误，提示前往设置选择模型。
 
 ## 许可证
 

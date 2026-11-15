@@ -5,6 +5,10 @@
   "license": "MIT",
   "author": "let5sne",
   "type": "module",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "check": "node --check index.js && node --check client.js"
+  },
   "exports": {
     ".": "./index.js",
     "./client": "./client.js",
