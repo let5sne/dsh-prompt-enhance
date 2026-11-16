@@ -1,4 +1,4 @@
-# 提交给 awesome-dsh-plugin 的条目（明天仓库满 1 天后使用）
+# 提交给 awesome-dsh-plugin 的条目草稿
 # 用法：fork https://github.com/awesome-dsh-plugin/awesome-dsh-plugin
 #       新建 data/plugins/let5sne__dsh-prompt-enhance.yml，把下面内容原样粘进去
 #       提一个只改这一个文件的 PR（一个 PR 最多 3 条）
@@ -6,7 +6,7 @@ url: https://github.com/let5sne/dsh-prompt-enhance
 name: let5sne/dsh-prompt-enhance
 category: ui
 description:
-  en: 'Adds a star button left of the composer model selector that rewrites the current draft with the default model.'
-  zh: '在输入区模型选择器左侧新增五角星按钮，用默认模型把当前草稿改写成更清晰的提示词。'
+  en: 'Adds a magic wand button left of the composer model selector that rewrites the current draft with the default model.'
+  zh: '在输入区模型选择器左侧新增魔法棒按钮，用默认模型把当前草稿改写成更清晰的提示词。'
 icon: https://raw.githubusercontent.com/let5sne/dsh-prompt-enhance/main/assets/icon-180.png
-# tarball: https://github.com/let5sne/dsh-prompt-enhance/releases/download/v1.0.0/dsh-prompt-enhance-1.0.0.tgz
+# tarball: https://github.com/let5sne/dsh-prompt-enhance/releases/download/v1.0.1/let5sne-dsh-prompt-enhance-1.0.1.tgz

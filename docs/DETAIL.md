@@ -1,1 +1,1 @@
-![The star button in the composer tool row, next to the model selector, and the rewritten draft it inserts](preview.svg)
+![The magic wand button in the composer tool row, next to the model selector, and the rewritten draft it inserts](preview.svg)

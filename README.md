@@ -19,7 +19,7 @@
 dsh plugin --profile <profile> add github:let5sne/dsh-prompt-enhance
 
 # 或钉住版本
-dsh plugin --profile <profile> add "github:let5sne/dsh-prompt-enhance#v1.0.0"
+dsh plugin --profile <profile> add "github:let5sne/dsh-prompt-enhance#v1.0.1"
 ```
 
 安装后出现在 插件 页的已安装列表里；确保该行是启用状态。
@@ -41,7 +41,7 @@ dsh plugin --profile <profile> add "github:let5sne/dsh-prompt-enhance#v1.0.0"
 
 ## 本地验证
 
-需要支持内置测试运行器的 Node.js，无需安装测试依赖：
+在 Git 源码检出目录中，需要支持内置测试运行器及 mock timers 的 Node.js，无需安装测试依赖（分发包不包含测试文件）：
 
 ```sh
 npm test
@@ -74,6 +74,10 @@ https://let5sne.github.io/dsh-prompt-enhance/market/index.json
 
 - `engines.dsh: ">=0.2.0-rc.2"`（在 0.2.2-rc.1 上开发与验证）。
 - Host 需要 Web GUI 进程提供 `webServer`、`llm` 与 `agentDefaultModel` 三项服务；缺少硬依赖时 Host 插件不能激活。服务存在但尚未配置默认模型时，增强请求会返回错误，提示前往设置选择模型。
+
+## 更新记录
+
+当前版本为 **1.0.1**，包含魔法棒图标、取消与丢弃入口、中文长度修复及请求来源校验。完整变更见 [CHANGELOG.md](CHANGELOG.md)。市场索引固定到发布提交，不会自动跟随 `main`。
 
 ## 许可证
 

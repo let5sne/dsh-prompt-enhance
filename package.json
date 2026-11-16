@@ -1,6 +1,6 @@
 {
   "name": "@let5sne/dsh-prompt-enhance",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Adds a magic wand button left of the model selector that rewrites the composer draft with the default model",
   "license": "MIT",
   "author": "let5sne",
@@ -20,9 +20,12 @@
     "client.js",
     "cordis.patch.yml",
     "locale/*.json",
-    "docs",
+    "docs/DETAIL.md",
+    "docs/DETAIL.zh.md",
+    "docs/preview.svg",
     "icon.svg",
-    "README.md"
+    "README.md",
+    "CHANGELOG.md"
   ],
   "keywords": [
     "dsh",
