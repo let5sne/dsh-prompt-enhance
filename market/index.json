@@ -7,14 +7,24 @@
       "name": "@let5sne/dsh-prompt-enhance",
       "title": { "en": "Prompt enhance", "zh": "提示词增强" },
       "description": {
-        "en": "Adds a star button left of the composer model selector that rewrites the current draft with the default model.",
-        "zh": "在输入区模型选择器左侧新增五角星按钮，用默认模型把当前草稿改写成更清晰的提示词。"
+        "en": "Adds a magic wand button left of the composer model selector that rewrites the current draft with the default model.",
+        "zh": "在输入区模型选择器左侧新增魔法棒按钮，用默认模型把当前草稿改写成更清晰的提示词。"
       },
       "icon": "icons/icon-180.png",
       "author": "let5sne",
       "homepage": "https://github.com/let5sne/dsh-prompt-enhance#readme",
       "repository": { "url": "https://github.com/let5sne/dsh-prompt-enhance" },
       "versions": [
+        {
+          "version": "1.0.1",
+          "publishTimestamp": 1794812240,
+          "engines": { "dsh": ">=0.2.0-rc.2" },
+          "source": {
+            "type": "git",
+            "url": "https://github.com/let5sne/dsh-prompt-enhance",
+            "commit": "b8319ebc83d6c54fc699b65a69118b43aa352a71"
+          }
+        },
         {
           "version": "1.0.0",
           "publishTimestamp": 1794762641,
