@@ -19,7 +19,7 @@
 dsh plugin --profile <profile> add github:let5sne/dsh-prompt-enhance
 
 # 或钉住版本
-dsh plugin --profile <profile> add "github:let5sne/dsh-prompt-enhance#v1.0.1"
+dsh plugin --profile <profile> add "github:let5sne/dsh-prompt-enhance#v1.0.2"
 ```
 
 安装后出现在 插件 页的已安装列表里；确保该行是启用状态。
@@ -77,7 +77,7 @@ https://let5sne.github.io/dsh-prompt-enhance/market/index.json
 
 ## 更新记录
 
-当前版本为 **1.0.1**，包含魔法棒图标、取消与丢弃入口、中文长度修复及请求来源校验。完整变更见 [CHANGELOG.md](CHANGELOG.md)。市场索引固定到发布提交，不会自动跟随 `main`。
+当前版本为 **1.0.2**，插件图标与输入区按钮统一为魔法棒，详情预览为「草稿 → 结构化提示词」对照图。完整变更见 [CHANGELOG.md](CHANGELOG.md)。市场索引固定到发布提交，不会自动跟随 `main`。
 
 ## 许可证
 
