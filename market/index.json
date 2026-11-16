@@ -45,6 +45,37 @@
           }
         }
       ]
+    },
+    {
+      "name": "@let5sne/dsh-input-predict",
+      "title": {
+        "en": "Input prediction",
+        "zh": "输入预测"
+      },
+      "description": {
+        "en": "Shows a predicted next message as the empty composer placeholder; Tab accepts, Esc dismisses. Toggle it with the icon beside the model selector. While enabled, recent conversation text is sent to the configured model.",
+        "zh": "输入框为空时，把预测的下一条消息显示为占位提示；Tab 采纳，Esc 忽略。用模型选择旁的图标开关。开启后会把近期会话文本发送给配置的模型。"
+      },
+      "icon": "icons/icon-input-predict-180.png",
+      "author": "let5sne",
+      "homepage": "https://github.com/let5sne/dsh-input-predict#readme",
+      "repository": {
+        "url": "https://github.com/let5sne/dsh-input-predict"
+      },
+      "versions": [
+        {
+          "version": "1.0.0",
+          "publishTimestamp": 1794819478,
+          "engines": {
+            "dsh": "0.2.2-rc.3"
+          },
+          "source": {
+            "type": "git",
+            "url": "https://github.com/let5sne/dsh-input-predict",
+            "commit": "593c147e67250e5d848833161d514e7ae9137d0d"
+          }
+        }
+      ]
     }
   ]
 }
