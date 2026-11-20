@@ -64,6 +64,18 @@
       },
       "versions": [
         {
+          "version": "1.0.1",
+          "publishTimestamp": 1795184718,
+          "engines": {
+            "dsh": ">=0.2.2-rc.3 <0.2.3-0"
+          },
+          "source": {
+            "type": "git",
+            "url": "https://github.com/let5sne/dsh-input-predict",
+            "commit": "62906c18234e2ebf0d620596f58523ed87507154"
+          }
+        },
+        {
           "version": "1.0.0",
           "publishTimestamp": 1794819478,
           "engines": {
