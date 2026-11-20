@@ -72,12 +72,13 @@ https://let5sne.github.io/dsh-prompt-enhance/market/index.json
 
 ## 兼容性
 
-- `engines.dsh: ">=0.2.0-rc.2"`（在 0.2.2-rc.1 上开发与验证）。
+- `engines.dsh: ">=0.2.0-rc.2 <0.3.0"`；已在 **0.2.2-rc.5**（Desktop）上复验，此前在 0.2.2-rc.1 上开发与验证。
+- 0.2.2-rc.5 复验范围：Host 增强接口在带 `Origin` 的同源请求下返回 200 并正常改写；跨源请求仍返回 403；输入区魔法棒按钮正常渲染。
 - Host 需要 Web GUI 进程提供 `webServer`、`llm` 与 `agentDefaultModel` 三项服务；缺少硬依赖时 Host 插件不能激活。服务存在但尚未配置默认模型时，增强请求会返回错误，提示前往设置选择模型。
 
 ## 更新记录
 
-当前版本为 **1.0.2**，插件图标与输入区按钮统一为魔法棒，详情预览为「草稿 → 结构化提示词」对照图。完整变更见 [CHANGELOG.md](CHANGELOG.md)。市场索引固定到发布提交，不会自动跟随 `main`。
+当前版本为 **1.0.3**，在 DSH 0.2.2-rc.5 上复验通过，并把 `engines.dsh` 的上界收紧到 `<0.3.0`。完整变更见 [CHANGELOG.md](CHANGELOG.md)。市场索引固定到发布提交，不会自动跟随 `main`。
 
 ## 许可证
 
