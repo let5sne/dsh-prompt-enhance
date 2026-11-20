@@ -16,6 +16,16 @@
       "repository": { "url": "https://github.com/let5sne/dsh-prompt-enhance" },
       "versions": [
         {
+          "version": "1.0.3",
+          "publishTimestamp": 1795186471,
+          "engines": { "dsh": ">=0.2.0-rc.2 <0.3.0" },
+          "source": {
+            "type": "git",
+            "url": "https://github.com/let5sne/dsh-prompt-enhance",
+            "commit": "0c26c4644ee132715e6291f9966ac45b15e2bcc3"
+          }
+        },
+        {
           "version": "1.0.2",
           "publishTimestamp": 1794817056,
           "engines": { "dsh": ">=0.2.0-rc.2" },
